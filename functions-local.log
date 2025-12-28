@@ -1,0 +1,595 @@
+
+> serve
+> npm run build && firebase emulators:start --only functions
+
+
+> build
+> tsc
+
+i  emulators: Starting emulators: functions
+⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect
+i  ui: downloading ui-v1.15.0.zip...
+
+i  functions: Watching "/Users/TheBadenCo/Downloads/Current With Agents/functions" for Cloud Functions...
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8802
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+✔  functions[us-central1-clearStemAgent]: http function initialized (http://127.0.0.1:5001/wreath-weaver-kdfbb/us-central1/clearStemAgent).
+✔  functions[us-central1-botanicalAnalysisAgent]: http function initialized (http://127.0.0.1:5001/wreath-weaver-kdfbb/us-central1/botanicalAnalysisAgent).
+
+[90m┌─────────────────────────────────────────────────────────────┐[39m
+[90m│[39m ✔  All emulators ready! It is now safe to connect your app. [90m│[39m
+[90m│[39m i  View Emulator UI at http://127.0.0.1:4000/               [90m│[39m
+[90m└─────────────────────────────────────────────────────────────┘[39m
+
+[90m┌───────────[39m[90m┬────────────────[39m[90m┬─────────────────────────────────┐[39m
+[90m│[39m[33m Emulator  [39m[90m│[39m[33m Host:Port      [39m[90m│[39m[33m View in Emulator UI             [39m[90m│[39m
+[90m├───────────[39m[90m┼────────────────[39m[90m┼─────────────────────────────────┤[39m
+[90m│[39m Functions [90m│[39m 127.0.0.1:5001 [90m│[39m http://127.0.0.1:4000/functions [90m│[39m
+[90m└───────────[39m[90m┴────────────────[39m[90m┴─────────────────────────────────┘[39m
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+i  functions: Beginning execution of "us-central1-clearStemAgent"
+i  functions: Finished "us-central1-clearStemAgent" in 6.103044ms
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8059
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8502
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8032
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8312
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8806
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8933
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8983
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8414
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8654
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8083
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8421
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8334
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8755
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8402
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8158
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8828
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8745
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8331
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8616
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8106
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8502
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8562
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8474
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8109
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8058
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8260
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8952
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8805
+
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8932
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8046
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8776
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8356
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8079
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8948
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8816
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+✔  functions[us-central1-logicEngineAgent]: http function initialized (http://127.0.0.1:5001/wreath-weaver-kdfbb/us-central1/logicEngineAgent).
+✔  functions[us-central1-florosAgent]: http function initialized (http://127.0.0.1:5001/wreath-weaver-kdfbb/us-central1/florosAgent).
+✔  functions[us-central1-fallbackAgent]: http function initialized (http://127.0.0.1:5001/wreath-weaver-kdfbb/us-central1/fallbackAgent).
+✔  functions[us-central1-fullWreathPipeline]: http function initialized (http://127.0.0.1:5001/wreath-weaver-kdfbb/us-central1/fullWreathPipeline).
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8441
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8617
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8269
+
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8117
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8022
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8309
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8410
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8085
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8120
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8286
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8349
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8586
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8828
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8887
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8502
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8012
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8313
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8786
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8052
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8018
+
+Serving at port 8531
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8991
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8129
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8289
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8864
+
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8867
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8933
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8661
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8071
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8261
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8148
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8356
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8420
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8986
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8551
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8157
+
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8378
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8995
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8058
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8940
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8300
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+⚠  functions: Your requested "node" version "18" doesn't match your global version "22". Using node@22 from host.
+i  functions: Loaded environment variables from .env.
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8491
+
+✔  functions: Loaded functions definitions from source: clearStemAgent, botanicalAnalysisAgent, logicEngineAgent, florosAgent, fallbackAgent, fullWreathPipeline.
