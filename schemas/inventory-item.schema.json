@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evercrafted.local/schemas/inventory-item.schema.json",
+  "title": "Evercrafted Inventory Item",
+  "type": "object",
+  "required": [
+    "id",
+    "user_id",
+    "name",
+    "category",
+    "color_family",
+    "role",
+    "qty_on_hand",
+    "bloom_diameter",
+    "stem_length",
+    "created_at"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "user_id": { "type": "string" },
+    "name": { "type": "string" },
+    "category": { "type": "string" },
+    "color_family": { "type": "string" },
+    "role": {
+      "type": "string",
+      "enum": ["focal", "secondary", "accent", "filler", "greenery", "ribbon", "decor"]
+    },
+    "qty_on_hand": { "type": "integer", "minimum": 0 },
+    "bloom_diameter": { "type": "number", "minimum": 0 },
+    "stem_length": { "type": "number", "minimum": 0 },
+    "image_url": { "type": "string", "format": "uri" },
+    "cost_per_unit": { "type": "number", "minimum": 0 },
+    "supplier_sku": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

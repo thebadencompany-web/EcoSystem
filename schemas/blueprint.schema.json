@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evercrafted.local/schemas/blueprint.schema.json",
+  "title": "Evercrafted Blueprint",
+  "type": "object",
+  "required": [
+    "blueprint_id",
+    "created_at",
+    "version",
+    "metadata",
+    "base",
+    "composition",
+    "zones",
+    "elements",
+    "scores",
+    "build_instructions",
+    "export_formats"
+  ],
+  "properties": {
+    "blueprint_id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "version": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "required": ["user_id", "source", "title"],
+      "properties": {
+        "user_id": { "type": "string" },
+        "source": {
+          "type": "string",
+          "enum": ["memory_weaver", "inventory_weaver", "design_studio", "api"]
+        },
+        "title": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "base": {
+      "type": "object",
+      "required": ["type", "outer_diameter", "inner_diameter", "thickness"],
+      "properties": {
+        "type": { "type": "string", "enum": ["grapevine", "foam", "wire", "straw"] },
+        "outer_diameter": { "type": "number", "minimum": 1 },
+        "inner_diameter": { "type": "number", "minimum": 0 },
+        "thickness": { "type": "number", "minimum": 0 },
+        "material_notes": { "type": "string" }
+      }
+    },
+    "composition": {
+      "type": "object",
+      "required": ["style", "formula"],
+      "properties": {
+        "style": { "type": "string" },
+        "formula": { "type": "string" },
+        "visual_weight": { "type": "string" },
+        "negative_space": { "type": "boolean" }
+      }
+    },
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["zone_id", "type", "angle_start", "angle_end", "radius_min", "radius_max"],
+        "properties": {
+          "zone_id": { "type": "string" },
+          "type": { "type": "string" },
+          "angle_start": { "type": "number", "minimum": 0, "maximum": 360 },
+          "angle_end": { "type": "number", "minimum": 0, "maximum": 360 },
+          "radius_min": { "type": "number", "minimum": 0, "maximum": 1 },
+          "radius_max": { "type": "number", "minimum": 0, "maximum": 1 },
+          "allowed_roles": { "type": "array", "items": { "type": "string" } },
+          "density_cap": { "type": "number", "minimum": 0, "maximum": 1 },
+          "locked": { "type": "boolean" }
+        }
+      }
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["element_id", "sku", "role", "angle_deg", "radius_norm", "zone_id"],
+        "properties": {
+          "element_id": { "type": "string" },
+          "sku": { "type": "string" },
+          "name": { "type": "string" },
+          "role": { "type": "string" },
+          "angle_deg": { "type": "number", "minimum": 0, "maximum": 360 },
+          "radius_norm": { "type": "number", "minimum": 0, "maximum": 1 },
+          "rotation_deg": { "type": "number" },
+          "scale": { "type": "number", "minimum": 0.1 },
+          "layer": { "type": "integer" },
+          "zone_id": { "type": "string" },
+          "cluster_id": { "type": "string" }
+        }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "properties": {
+        "balance": { "type": "number", "minimum": 0, "maximum": 1 },
+        "rhythm": { "type": "number", "minimum": 0, "maximum": 1 },
+        "proportion": { "type": "number", "minimum": 0, "maximum": 1 },
+        "contrast": { "type": "number", "minimum": 0, "maximum": 1 },
+        "silhouette": { "type": "number", "minimum": 0, "maximum": 1 },
+        "inventory_fit": { "type": "number", "minimum": 0, "maximum": 1 },
+        "overall": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "build_instructions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["step", "action", "items"],
+        "properties": {
+          "step": { "type": "integer", "minimum": 1 },
+          "action": { "type": "string" },
+          "items": { "type": "array", "items": { "type": "string" } },
+          "zone": { "type": "string" },
+          "clock_position": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "export_formats": {
+      "type": "object",
+      "properties": {
+        "svg_url": { "type": "string", "format": "uri" },
+        "pdf_url": { "type": "string", "format": "uri" },
+        "json_url": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}
