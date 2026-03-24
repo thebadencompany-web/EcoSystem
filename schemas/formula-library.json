@@ -1,0 +1,83 @@
+[
+  {
+    "id": "crescent",
+    "name": "Crescent",
+    "description": "Asymmetrical arc, heaviest at bottom",
+    "zones": [
+      {
+        "zone_id": "focal",
+        "type": "focal",
+        "angle_start": 180,
+        "angle_end": 240,
+        "radius_min": 0.7,
+        "radius_max": 1.0,
+        "density": 0.8
+      },
+      {
+        "zone_id": "arc",
+        "type": "secondary",
+        "angle_start": 150,
+        "angle_end": 270,
+        "radius_min": 0.6,
+        "radius_max": 0.9,
+        "density": 0.5
+      }
+    ],
+    "cluster_rules": {
+      "focal_clusters": 1,
+      "secondary_clusters": 2,
+      "greenery_follows_arc": true
+    }
+  },
+  {
+    "id": "full_halo",
+    "name": "Full Halo",
+    "description": "Even radial distribution with no negative space",
+    "zones": [
+      {
+        "zone_id": "ring",
+        "type": "mixed",
+        "angle_start": 0,
+        "angle_end": 360,
+        "radius_min": 0.55,
+        "radius_max": 1.0,
+        "density": 0.75
+      }
+    ],
+    "cluster_rules": {
+      "focal_clusters": 6,
+      "secondary_clusters": 10,
+      "greenery_follows_arc": false
+    }
+  },
+  {
+    "id": "focal_burst",
+    "name": "Focal Burst",
+    "description": "Single focal region with radiating accents",
+    "zones": [
+      {
+        "zone_id": "burst_core",
+        "type": "focal",
+        "angle_start": 190,
+        "angle_end": 235,
+        "radius_min": 0.65,
+        "radius_max": 0.95,
+        "density": 0.9
+      },
+      {
+        "zone_id": "burst_rays",
+        "type": "accent",
+        "angle_start": 150,
+        "angle_end": 280,
+        "radius_min": 0.45,
+        "radius_max": 1.0,
+        "density": 0.55
+      }
+    ],
+    "cluster_rules": {
+      "focal_clusters": 1,
+      "secondary_clusters": 3,
+      "greenery_follows_arc": true
+    }
+  }
+]
