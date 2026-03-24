@@ -10,3 +10,5 @@ This repository now includes a structured handoff package for the Evercrafted pl
 - Starter formula presets: `schemas/formula-library.json`
 
 These artifacts are intended to align Memory Weaver, Inventory Weaver, and Design Studio around one canonical blueprint object.
+
+- Execution plan: `docs/evercrafted/NEXT_STEPS.md`
