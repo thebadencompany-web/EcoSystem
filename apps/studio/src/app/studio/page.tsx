@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { desc, eq } from "drizzle-orm";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { projects, workspaceMembers, workspaces } from "@/db/schema";
 import StudioClient from "./studio-client";
 
@@ -8,6 +8,7 @@ export default async function StudioPage() {
   const { userId } = await auth();
   if (!userId) return null;
 
+  const db = getDb();
   const memberships = await db
     .select({ workspace: workspaces, membership: workspaceMembers })
     .from(workspaceMembers)
