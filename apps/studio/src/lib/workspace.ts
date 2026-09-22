@@ -1,12 +1,13 @@
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { workspaceMembers } from "@/db/schema";
 
 export async function requireWorkspace(workspaceId: string) {
   const { userId } = await auth();
   if (!userId) throw new Error("UNAUTHORIZED");
 
+  const db = getDb();
   const [membership] = await db
     .select()
     .from(workspaceMembers)
