@@ -1,12 +1,13 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { workspaceMembers, workspaces } from "@/db/schema";
 
 export async function GET() {
   const { userId } = await auth();
   if (!userId) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
+  const db = getDb();
   const rows = await db
     .select({ workspace: workspaces, membership: workspaceMembers })
     .from(workspaceMembers)
@@ -20,10 +21,12 @@ export async function POST(request: Request) {
   const { userId } = await auth();
   if (!userId) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
+  const db = getDb();
   const body = await request.json().catch(() => ({}));
   const user = await currentUser();
   const requestedName = typeof body.name === "string" ? body.name.trim() : "";
-  const name = requestedName || user?.firstName ? `${requestedName || user?.firstName}'s Studio` : "My Evercrafted Studio";
+  const fallbackName = user?.firstName ? `${user.firstName}'s Studio` : "My Evercrafted Studio";
+  const name = requestedName || fallbackName;
 
   const [workspace] = await db.insert(workspaces).values({
     name,
