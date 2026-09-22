@@ -1,10 +1,11 @@
 import { auth } from "@clerk/nextjs/server";
 import { and, desc, eq } from "drizzle-orm";
-import { db } from "@/db/client";
+import { getDb } from "@/db/client";
 import { projects, workspaceMembers } from "@/db/schema";
 import { createProjectSchema } from "@/lib/contracts";
 
 async function canAccessWorkspace(workspaceId: string, userId: string) {
+  const db = getDb();
   const [row] = await db
     .select({ id: workspaceMembers.id })
     .from(workspaceMembers)
@@ -21,6 +22,7 @@ export async function GET(request: Request) {
   if (!workspaceId) return Response.json({ error: "workspaceId is required" }, { status: 400 });
   if (!(await canAccessWorkspace(workspaceId, userId))) return Response.json({ error: "Forbidden" }, { status: 403 });
 
+  const db = getDb();
   const rows = await db
     .select()
     .from(projects)
@@ -38,6 +40,7 @@ export async function POST(request: Request) {
   if (!parsed.success) return Response.json({ error: "Invalid project request", issues: parsed.error.issues }, { status: 400 });
   if (!(await canAccessWorkspace(parsed.data.workspaceId, userId))) return Response.json({ error: "Forbidden" }, { status: 403 });
 
+  const db = getDb();
   const [project] = await db.insert(projects).values({
     workspaceId: parsed.data.workspaceId,
     ownerUserId: userId,
