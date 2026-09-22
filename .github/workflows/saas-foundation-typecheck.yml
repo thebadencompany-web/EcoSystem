@@ -1,8 +1,8 @@
-name: Evercrafted SaaS Foundation Typecheck
+name: Evercrafted Studio Verification
 
 on:
   push:
-    branches: [saas-foundation]
+    branches: [main, saas-foundation, codex/evercrafted-gate-0-1-integration]
     paths:
       - "apps/studio/**"
       - ".github/workflows/saas-foundation-typecheck.yml"
@@ -11,7 +11,7 @@ on:
       - "apps/studio/**"
 
 jobs:
-  typecheck:
+  verify:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -22,4 +22,4 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - run: npm run typecheck
+      - run: npm run verify

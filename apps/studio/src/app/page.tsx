@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignInButton, UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { userId } = await auth();
   return (
     <main className="main">
       <div className="eyebrow">Evercrafted Studio · SaaS</div>
@@ -11,11 +13,11 @@ export default function HomePage() {
         blueprinting, visualization, rendering, production guidance and selling assets in one project.
       </p>
       <div className="hero-actions">
-        <SignedOut><SignInButton mode="modal"><button className="btn">Sign in</button></SignInButton></SignedOut>
-        <SignedIn>
-          <Link className="btn" href="/studio">Open Studio</Link>
-          <UserButton />
-        </SignedIn>
+        {userId ? (
+          <><Link className="btn" href="/studio">Open Studio</Link><UserButton /></>
+        ) : (
+          <SignInButton mode="modal"><button className="btn">Sign in</button></SignInButton>
+        )}
       </div>
       <section className="grid">
         <article className="card"><div className="eyebrow">01 · Begin</div><h2>Memory or brief</h2><p>Translate a customer story into Essence and design intent before geometry begins.</p></article>
