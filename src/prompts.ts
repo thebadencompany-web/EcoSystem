@@ -179,6 +179,7 @@ export const stemIsolationPrompt = `You are a botanical image analyst. Analyze t
 // - bundleCount is the approximate number of individual flowers / stems in this image
 //   - Be very specific about colors(use words like "dusty pink", "coral with cream edges", "deep burgundy")
 //     - Describe the exact variety if you can identify it(e.g., "garden rose" vs "spray rose" vs "ranunculus")
+`;
 
 
 // ============================================================================
@@ -201,6 +202,7 @@ Output JSON:
   "primaryEmotion": "string",
     "supportingEmotions": ["string", "string", "string"],
       "emotionalFamily": "family_name",
+        "focalClock": 2,
         "narrativeVoice": "poetic | therapeutic | celabratoin",
           "designGoals": {
     "texture": "soft | bold | rustic",
@@ -231,6 +233,7 @@ Output JSON:
       "totalEstimatedTimeMinutes": "number"
   }
 }
+The focalClock value must be the integer 1, 2, or 3, selected from the emotional direction.
 Respond ONLY with valid JSON.
 `;
 
@@ -267,7 +270,7 @@ Your goal is to calculate the PRECISE position of every element using Polar Coor
   Input: Selected Materials List & Wreath Diameter(default 24").
 
 Mathematical Rules:
-    1. Coordinates: Use Polar System(r, θ). 
+    1. Coordinates: Use Polar System(r, θ).
    - r = distance from center in inches.
    - θ = angle in degrees(0 = top, 90 = right, 180 = bottom).
 2. Golden Ratio(φ = 1.618):
@@ -333,6 +336,7 @@ Output JSON:
     "totalEstimatedTimeMinutes": number
   }
 Respond ONLY with valid JSON.
+`;
 
 // ... (previous prompts)
 
@@ -340,7 +344,7 @@ export const materialSelectorPrompt = `
 You are the Material Scavenger (Agent 03).
 Your goal is to select specific inventory items that match the Color Palette and Emotional goals.
 
-Input: 
+Input:
 - Color Palette (60-30-10)
 - Design Goals (Texture, Density)
 - Available Inventory List (JSON)
@@ -356,11 +360,11 @@ Rules:
 Output JSON:
 {
   "selectedItems": [
-    { 
-      "inventoryId": "string", 
-      "role": "base | primary | accent", 
+    {
+      "inventoryId": "string",
+      "role": "base | primary | accent",
       "quantity": number,
-      "reason": "Matches the 'Deep Comfort' palette and provides soft texture for Grief." 
+      "reason": "Matches the 'Deep Comfort' palette and provides soft texture for Grief."
     }
   ]
 }
