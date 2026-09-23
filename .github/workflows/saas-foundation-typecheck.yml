@@ -1,0 +1,25 @@
+name: Evercrafted Studio Verification
+
+on:
+  push:
+    branches: [main, saas-foundation, codex/evercrafted-gate-0-1-integration]
+    paths:
+      - "apps/studio/**"
+      - ".github/workflows/saas-foundation-typecheck.yml"
+  pull_request:
+    paths:
+      - "apps/studio/**"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/studio
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run verify
