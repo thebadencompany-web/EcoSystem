@@ -19,7 +19,8 @@
     "react-dom": "^19.2.0",
     "stripe": "^18.5.0",
     "workflow": "^4.1.0",
-    "zod": "^4.1.5"
+    "zod": "^4.1.5",
+    "@vercel/blob": "^2.6.1"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
