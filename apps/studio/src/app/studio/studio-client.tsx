@@ -36,7 +36,8 @@ export default function StudioClient({ workspace, initialProjects }: { workspace
   const [platformFeePct, setPlatformFeePct] = useState(10);
   const [targetMarginPct, setTargetMarginPct] = useState(60);
 
-  const [reverseImageUrl, setReverseImageUrl] = useState("");
+  const [reverseFile, setReverseFile] = useState<File | null>(null);
+  const [reversePreviewUrl, setReversePreviewUrl] = useState("");
   const [reverseProjectName, setReverseProjectName] = useState("Imported signature wreath");
   const [reverseImportId, setReverseImportId] = useState("");
   const [reverseStatus, setReverseStatus] = useState("Not started");
@@ -86,30 +87,29 @@ export default function StudioClient({ workspace, initialProjects }: { workspace
     setSellerBusy(false);
   }
 
-  async function createAndAnalyzeReverse() {
-    if (!workspace || !reverseImageUrl.trim()) return;
-    setReverseBusy(true); setReverseError(""); setReverseStatus("Creating import…");
+  async function uploadAndAnalyzeReverse() {
+    if (!workspace || !reverseFile) return;
+    setReverseBusy(true); setReverseError(""); setReverseStatus("Uploading private image…");
     try {
-      const createdResponse = await fetch("/api/reverse", {
-        method:"POST",
-        headers:{"content-type":"application/json"},
-        body:JSON.stringify({
-          action:"create",
-          workspaceId:workspace.id,
-          sourceKey:reverseImageUrl.trim(),
-          sourceContentType:"image/*",
-          sourceFilename:"remote-wreath-image",
-        }),
-      });
-      const created = await createdResponse.json();
-      if (!createdResponse.ok) throw new Error(created.error || "Could not create reverse import.");
-      setReverseImportId(created.import.id);
+      const uploadResponse = await fetch(
+        "/api/reverse/upload?workspaceId="+encodeURIComponent(workspace.id)+"&filename="+encodeURIComponent(reverseFile.name),
+        {
+          method:"POST",
+          headers:{"content-type":reverseFile.type},
+          body:reverseFile,
+        }
+      );
+      const uploaded = await uploadResponse.json();
+      if (!uploadResponse.ok) throw new Error(uploaded.error || "Could not upload wreath image.");
+
+      setReverseImportId(uploaded.import.id);
+      setReversePreviewUrl(uploaded.sourceUrl);
       setReverseStatus("Analyzing image…");
 
       const analysisResponse = await fetch("/api/reverse", {
         method:"POST",
         headers:{"content-type":"application/json"},
-        body:JSON.stringify({ action:"analyze", id:created.import.id, imageUrl:reverseImageUrl.trim() }),
+        body:JSON.stringify({ action:"analyze", id:uploaded.import.id }),
       });
       const analyzed = await analysisResponse.json();
       if (!analysisResponse.ok) throw new Error(analyzed.error || "Vision analysis failed.");
@@ -231,19 +231,24 @@ export default function StudioClient({ workspace, initialProjects }: { workspace
 
             <section id="reverse" className="card feature-section">
               <div className="eyebrow">Reverse Engineer</div><h2>Existing wreath → editable Evercrafted project.</h2>
-              <p className="muted">This GitHub/Vercel port accepts a source image URL today. Permanent file upload/storage is the next infrastructure connection; the analysis/commit contracts are already production-backed.</p>
+              <p className="muted">Upload a finished wreath directly. The image is stored in private Vercel Blob, previewed through an authenticated route, and analyzed server-side without exposing a permanent public source URL.</p>
               <div className="two-col">
                 <div>
-                  <div className="field"><label>Wreath image URL</label><input value={reverseImageUrl} onChange={e=>setReverseImageUrl(e.target.value)} placeholder="https://…"/></div>
+                  <div className="field"><label>Wreath image</label><input type="file" accept="image/png,image/jpeg,image/webp" onChange={e=>{
+                    const file=e.target.files?.[0] ?? null;
+                    setReverseFile(file);
+                    setReversePreviewUrl(file ? URL.createObjectURL(file) : "");
+                    if (file && reverseProjectName==="Imported signature wreath") setReverseProjectName(file.name.replace(/\.[^.]+$/,""));
+                  }}/></div>
                   <div className="field"><label>Project name</label><input value={reverseProjectName} onChange={e=>setReverseProjectName(e.target.value)}/></div>
                   {reverseError && <p className="error">{reverseError}</p>}
                   <div className="actions">
-                    <button className="btn" disabled={reverseBusy || !reverseImageUrl.trim()} onClick={createAndAnalyzeReverse}>{reverseBusy?"Working…":"Create & analyze"}</button>
+                    <button className="btn" disabled={reverseBusy || !reverseFile} onClick={uploadAndAnalyzeReverse}>{reverseBusy?"Working…":"Upload & analyze"}</button>
                     <button className="btn secondary" disabled={reverseBusy || !reverseImportId} onClick={commitReverse}>Commit as project</button>
                   </div>
                 </div>
                 <div className="reverse-result">
-                  {reverseImageUrl ? <img src={reverseImageUrl} alt="Reverse engineer source" /> : <div className="image-placeholder">Source image preview</div>}
+                  {reversePreviewUrl ? <img src={reversePreviewUrl} alt="Reverse engineer source" /> : <div className="image-placeholder">Source image preview</div>}
                   <div className="row"><strong>Status</strong><span className="pill">{reverseStatus}</span></div>
                   {reverseFormula && <div className="row"><strong>Formula</strong><span>{reverseFormula.replaceAll("_"," ")}</span></div>}
                   {reverseSummary && <p className="muted">{reverseSummary}</p>}
