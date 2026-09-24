@@ -107,9 +107,14 @@ export async function POST(request: Request) {
     if (typeof content !== "string") return Response.json({ error: "CometAPI returned no analysis." }, { status: 502 });
 
     const clean = content.trim().replace(/^```(?:json)?\s*/,"").replace(/\s*```$/,"");
-    const raw = JSON.parse(clean);
+    let raw: unknown;
+    try {
+      raw = JSON.parse(clean);
+    } catch {
+      return Response.json({ error: "Vision returned malformed JSON. Manual review is still available.", manualAvailable: true }, { status: 422 });
+    }
     const parsed = reverseAnalysisSchema.safeParse(raw);
-    if (!parsed.success) return Response.json({ error: "Vision analysis did not match the reverse-engineering contract.", issues: parsed.error.issues }, { status: 422 });
+    if (!parsed.success) return Response.json({ error: "Vision analysis did not match the reverse-engineering contract.", issues: parsed.error.issues, manualAvailable: true }, { status: 422 });
 
     const proposedBlueprint = reverseAnalysisToBlueprint(parsed.data);
     const [updated] = await db.update(reverseImports).set({
