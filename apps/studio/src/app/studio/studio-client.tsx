@@ -1,11 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserButton } from "@clerk/nextjs";
 
 type Workspace = { id: string; name: string; plan: string };
 type Project = { id: string; name: string; status: string; startingMode: string; updatedAt: Date | string };
+
+type SellerPackage = {
+  id: string;
+  materialCost: string | number;
+  suggestedPrice: string | number;
+  listingTitle: string | null;
+  listingDescription: string | null;
+  listingTags: unknown;
+};
 
 export default function StudioClient({ workspace, initialProjects }: { workspace: Workspace | null; initialProjects: Project[] }) {
   const router = useRouter();
@@ -15,6 +24,31 @@ export default function StudioClient({ workspace, initialProjects }: { workspace
   const [brief, setBrief] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+
+  const firstProjectId = initialProjects[0]?.id ?? "";
+  const [sellerProjectId, setSellerProjectId] = useState(firstProjectId);
+  const [sellerBusy, setSellerBusy] = useState(false);
+  const [sellerError, setSellerError] = useState("");
+  const [sellerPackage, setSellerPackage] = useState<SellerPackage | null>(null);
+  const [laborMinutes, setLaborMinutes] = useState(90);
+  const [laborRateHour, setLaborRateHour] = useState(20);
+  const [packagingCost, setPackagingCost] = useState(8);
+  const [platformFeePct, setPlatformFeePct] = useState(10);
+  const [targetMarginPct, setTargetMarginPct] = useState(60);
+
+  const [reverseImageUrl, setReverseImageUrl] = useState("");
+  const [reverseProjectName, setReverseProjectName] = useState("Imported signature wreath");
+  const [reverseImportId, setReverseImportId] = useState("");
+  const [reverseStatus, setReverseStatus] = useState("Not started");
+  const [reverseSummary, setReverseSummary] = useState("");
+  const [reverseFormula, setReverseFormula] = useState("");
+  const [reverseBusy, setReverseBusy] = useState(false);
+  const [reverseError, setReverseError] = useState("");
+
+  const listingTags = useMemo(() => {
+    const tags = sellerPackage?.listingTags;
+    return Array.isArray(tags) ? tags.map(String) : [];
+  }, [sellerPackage]);
 
   async function createWorkspace() {
     setBusy(true); setError("");
@@ -35,6 +69,78 @@ export default function StudioClient({ workspace, initialProjects }: { workspace
     setBusy(false);
   }
 
+  async function buildSellerPackage() {
+    if (!sellerProjectId) return;
+    setSellerBusy(true); setSellerError("");
+    const response = await fetch("/api/product-package", {
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({
+        projectId:sellerProjectId,
+        laborMinutes,laborRateHour,packagingCost,platformFeePct,targetMarginPct,
+      }),
+    });
+    const data = await response.json();
+    if (!response.ok) setSellerError(data.error || "Seller package generation failed.");
+    else setSellerPackage(data.package);
+    setSellerBusy(false);
+  }
+
+  async function createAndAnalyzeReverse() {
+    if (!workspace || !reverseImageUrl.trim()) return;
+    setReverseBusy(true); setReverseError(""); setReverseStatus("Creating import…");
+    try {
+      const createdResponse = await fetch("/api/reverse", {
+        method:"POST",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify({
+          action:"create",
+          workspaceId:workspace.id,
+          sourceKey:reverseImageUrl.trim(),
+          sourceContentType:"image/*",
+          sourceFilename:"remote-wreath-image",
+        }),
+      });
+      const created = await createdResponse.json();
+      if (!createdResponse.ok) throw new Error(created.error || "Could not create reverse import.");
+      setReverseImportId(created.import.id);
+      setReverseStatus("Analyzing image…");
+
+      const analysisResponse = await fetch("/api/reverse", {
+        method:"POST",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify({ action:"analyze", id:created.import.id, imageUrl:reverseImageUrl.trim() }),
+      });
+      const analyzed = await analysisResponse.json();
+      if (!analysisResponse.ok) throw new Error(analyzed.error || "Vision analysis failed.");
+      setReverseStatus("Needs review");
+      setReverseSummary(String(analyzed.import?.analysis?.summary || ""));
+      setReverseFormula(String(analyzed.import?.proposedFormulaId || ""));
+    } catch (e) {
+      setReverseStatus("Manual review available");
+      setReverseError(e instanceof Error ? e.message : "Reverse analysis failed.");
+    } finally {
+      setReverseBusy(false);
+    }
+  }
+
+  async function commitReverse() {
+    if (!reverseImportId) return;
+    setReverseBusy(true); setReverseError("");
+    const response = await fetch("/api/reverse", {
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({ action:"commit", id:reverseImportId, projectName:reverseProjectName }),
+    });
+    const data = await response.json();
+    if (!response.ok) setReverseError(data.error || "Could not commit reverse import.");
+    else {
+      setReverseStatus("Committed to project");
+      router.refresh();
+    }
+    setReverseBusy(false);
+  }
+
   return (
     <div className="shell">
       <aside className="rail">
@@ -46,7 +152,8 @@ export default function StudioClient({ workspace, initialProjects }: { workspace
           <a href="#inventory">Inventory</a>
           <a href="#blueprint">Blueprint Studio</a>
           <a href="#render">Render Studio</a>
-          <a href="#sell">Sell</a>
+          <a href="#sell">Product & Listing</a>
+          <a href="#reverse">Reverse Engineer</a>
           <a href="#library">Library</a>
         </nav>
         <div style={{marginTop:"auto"}}><UserButton /></div>
@@ -67,7 +174,7 @@ export default function StudioClient({ workspace, initialProjects }: { workspace
           <>
             <div className="eyebrow">{workspace.name} · {workspace.plan}</div>
             <h1 className="title">Your design work, together.</h1>
-            <p className="lede">Start from a memory, your inventory, or a composition formula. Every step stays attached to the same project.</p>
+            <p className="lede">Start from a memory, inventory, composition formula or an existing wreath. Every step stays attached to the same project.</p>
 
             <section id="create" className="grid">
               <article className="card">
@@ -84,13 +191,64 @@ export default function StudioClient({ workspace, initialProjects }: { workspace
                 {error && <p className="error">{error}</p>}
                 <button className="btn" disabled={busy || !projectName.trim()} onClick={createProject}>{busy?"Saving…":"Create project"}</button>
               </article>
-              <article className="card"><div className="eyebrow">Engine</div><h2>AI interprets. Evercrafted places.</h2><p>The production foundation now recognizes the 12 versioned Evercrafted composition formulas. Geometry will remain deterministic and blueprint-controlled.</p><span className="pill">12 formulas loaded</span></article>
-              <article className="card"><div className="eyebrow">Next connection</div><h2>Private inventory</h2><p>The next build layer connects workspace-owned materials to Blueprint Studio so designs can only consume the inventory scope you choose.</p><span className="pill">Foundation stage</span></article>
+              <article className="card"><div className="eyebrow">Engine</div><h2>AI interprets. Evercrafted places.</h2><p>The production foundation recognizes 12 versioned composition formulas. Geometry remains deterministic and blueprint-controlled.</p><span className="pill">12 formulas loaded</span></article>
+              <article className="card"><div className="eyebrow">Workflow</div><h2>One project record</h2><p>Blueprint, render, reverse import, costing and selling assets are being connected to the same canonical project instead of separate tools.</p><span className="pill">SaaS foundation</span></article>
             </section>
 
             <section id="projects" className="card" style={{marginTop:18}}>
               <div className="eyebrow">Projects</div><h2>On your worktable</h2>
-              {initialProjects.length ? initialProjects.map(p=><div className="row" key={p.id}><div><strong>{p.name}</strong><div className="muted">{p.startingMode.replaceAll("_"," ")} · {p.status}</div></div><span className="pill">Open soon</span></div>) : <p className="muted">Create your first project above.</p>}
+              {initialProjects.length ? initialProjects.map(p=><div className="row" key={p.id}><div><strong>{p.name}</strong><div className="muted">{p.startingMode.replaceAll("_"," ")} · {p.status}</div></div><span className="pill">Project</span></div>) : <p className="muted">Create your first project above.</p>}
+            </section>
+
+            <section id="sell" className="card feature-section">
+              <div className="eyebrow">Product & Listing Studio</div><h2>Build it. Price it. Sell it.</h2>
+              <div className="two-col">
+                <div>
+                  <div className="field"><label>Project</label><select value={sellerProjectId} onChange={e=>setSellerProjectId(e.target.value)}>
+                    <option value="">Choose project</option>{initialProjects.map(p=><option key={p.id} value={p.id}>{p.name}</option>)}
+                  </select></div>
+                  <div className="mini-grid">
+                    <div className="field"><label>Labor minutes</label><input type="number" value={laborMinutes} onChange={e=>setLaborMinutes(Number(e.target.value))}/></div>
+                    <div className="field"><label>Labor rate/hour</label><input type="number" value={laborRateHour} onChange={e=>setLaborRateHour(Number(e.target.value))}/></div>
+                    <div className="field"><label>Packaging</label><input type="number" value={packagingCost} onChange={e=>setPackagingCost(Number(e.target.value))}/></div>
+                    <div className="field"><label>Platform fee %</label><input type="number" value={platformFeePct} onChange={e=>setPlatformFeePct(Number(e.target.value))}/></div>
+                    <div className="field"><label>Target margin %</label><input type="number" value={targetMarginPct} onChange={e=>setTargetMarginPct(Number(e.target.value))}/></div>
+                  </div>
+                  {sellerError && <p className="error">{sellerError}</p>}
+                  <button className="btn" disabled={sellerBusy || !sellerProjectId} onClick={buildSellerPackage}>{sellerBusy?"Calculating…":"Build seller package"}</button>
+                </div>
+                <div className="seller-result">
+                  <div><span className="muted">Material cost</span><strong>{"$"+Number(sellerPackage?.materialCost || 0).toFixed(2)}</strong></div>
+                  <div><span className="muted">Suggested retail</span><strong>{"$"+Number(sellerPackage?.suggestedPrice || 0).toFixed(2)}</strong></div>
+                  {sellerPackage && <>
+                    <div className="field"><label>Listing title</label><input value={sellerPackage.listingTitle || ""} readOnly/></div>
+                    <div className="field"><label>Description</label><textarea rows={8} value={sellerPackage.listingDescription || ""} readOnly/></div>
+                    <div>{listingTags.map(tag=><span className="pill tag-pill" key={tag}>{tag}</span>)}</div>
+                  </>}
+                </div>
+              </div>
+            </section>
+
+            <section id="reverse" className="card feature-section">
+              <div className="eyebrow">Reverse Engineer</div><h2>Existing wreath → editable Evercrafted project.</h2>
+              <p className="muted">This GitHub/Vercel port accepts a source image URL today. Permanent file upload/storage is the next infrastructure connection; the analysis/commit contracts are already production-backed.</p>
+              <div className="two-col">
+                <div>
+                  <div className="field"><label>Wreath image URL</label><input value={reverseImageUrl} onChange={e=>setReverseImageUrl(e.target.value)} placeholder="https://…"/></div>
+                  <div className="field"><label>Project name</label><input value={reverseProjectName} onChange={e=>setReverseProjectName(e.target.value)}/></div>
+                  {reverseError && <p className="error">{reverseError}</p>}
+                  <div className="actions">
+                    <button className="btn" disabled={reverseBusy || !reverseImageUrl.trim()} onClick={createAndAnalyzeReverse}>{reverseBusy?"Working…":"Create & analyze"}</button>
+                    <button className="btn secondary" disabled={reverseBusy || !reverseImportId} onClick={commitReverse}>Commit as project</button>
+                  </div>
+                </div>
+                <div className="reverse-result">
+                  {reverseImageUrl ? <img src={reverseImageUrl} alt="Reverse engineer source" /> : <div className="image-placeholder">Source image preview</div>}
+                  <div className="row"><strong>Status</strong><span className="pill">{reverseStatus}</span></div>
+                  {reverseFormula && <div className="row"><strong>Formula</strong><span>{reverseFormula.replaceAll("_"," ")}</span></div>}
+                  {reverseSummary && <p className="muted">{reverseSummary}</p>}
+                </div>
+              </div>
             </section>
           </>
         )}
