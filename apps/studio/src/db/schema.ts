@@ -76,6 +76,8 @@ export const materials = pgTable("materials", {
   unitCost: numeric("unit_cost").notNull().default("0"),
   imageUrl: text("image_url"),
   cutoutUrl: text("cutout_url"),
+  imageKey: text("image_key"),
+  cutoutKey: text("cutout_key"),
   status: text("status").notNull().default("active"),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
@@ -159,3 +161,46 @@ export const projectAssets = pgTable("project_assets", {
   approved: boolean("approved").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
 });
+
+
+export const productPackages = pgTable("product_packages", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  workspaceId: uuid("workspace_id").notNull().references(() => workspaces.id, { onDelete: "cascade" }),
+  projectId: uuid("project_id").notNull().references(() => projects.id, { onDelete: "cascade" }),
+  blueprintId: uuid("blueprint_id").references(() => blueprints.id, { onDelete: "set null" }),
+  materialCost: numeric("material_cost").notNull().default("0"),
+  laborMinutes: integer("labor_minutes").notNull().default(90),
+  laborRateHour: numeric("labor_rate_hour").notNull().default("20"),
+  packagingCost: numeric("packaging_cost").notNull().default("8"),
+  platformFeePct: numeric("platform_fee_pct").notNull().default("10"),
+  targetMarginPct: numeric("target_margin_pct").notNull().default("60"),
+  suggestedPrice: numeric("suggested_price").notNull().default("0"),
+  listingTitle: text("listing_title"),
+  listingDescription: text("listing_description"),
+  listingTags: jsonb("listing_tags").notNull().default([]),
+  materialSummary: jsonb("material_summary").notNull().default([]),
+  dimensions: jsonb("dimensions").notNull().default({}),
+  status: text("status").notNull().default("draft"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+}, (t) => ({
+  projectUpdatedIdx: index("product_packages_project_updated_idx").on(t.projectId, t.updatedAt),
+}));
+
+export const reverseImports = pgTable("reverse_imports", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  workspaceId: uuid("workspace_id").notNull().references(() => workspaces.id, { onDelete: "cascade" }),
+  projectId: uuid("project_id").references(() => projects.id, { onDelete: "set null" }),
+  sourceKey: text("source_key").notNull(),
+  sourceContentType: text("source_content_type"),
+  sourceFilename: text("source_filename"),
+  analysisStatus: text("analysis_status").notNull().default("uploaded"),
+  analysis: jsonb("analysis").notNull().default({}),
+  proposedFormulaId: text("proposed_formula_id"),
+  proposedBlueprint: jsonb("proposed_blueprint").notNull().default({}),
+  committedBlueprintId: uuid("committed_blueprint_id").references(() => blueprints.id, { onDelete: "set null" }),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+}, (t) => ({
+  createdIdx: index("reverse_imports_created_idx").on(t.createdAt),
+}));
