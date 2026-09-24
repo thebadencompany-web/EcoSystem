@@ -1,4 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
+import { get } from "@vercel/blob";
 import { desc, eq } from "drizzle-orm";
 import { getDb } from "@/db/client";
 import { blueprints, projects, reverseImports } from "@/db/schema";
@@ -72,8 +73,14 @@ export async function POST(request: Request) {
       }, { status: 412 });
     }
 
-    const imageUrl = typeof body.imageUrl === "string" ? body.imageUrl : "";
-    if (!imageUrl) return Response.json({ error: "imageUrl is required for analysis" }, { status: 400 });
+    let imageUrl = typeof body.imageUrl === "string" ? body.imageUrl : "";
+    if (!imageUrl) {
+      const stored = await get(row.sourceKey, { access: "private", useCache: false });
+      if (!stored) return Response.json({ error: "Stored wreath image was not found." }, { status: 404 });
+      const bytes = await new Response(stored.stream).arrayBuffer();
+      const mime = stored.blob.contentType || row.sourceContentType || "image/jpeg";
+      imageUrl = `data:${mime};base64,${Buffer.from(bytes).toString("base64")}`;
+    }
 
     const prompt = [
       "Analyze this finished faux-botanical wreath for Evercrafted reverse engineering.",
